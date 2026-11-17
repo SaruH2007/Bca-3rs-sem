@@ -1,0 +1,38 @@
+<!DOCTYPE htnl>
+<html>
+    <head>
+        <title>internal CSS with javaScript</title>
+
+        <style>
+            body {
+                font-family:arial;
+                background-color:lightblue;
+                text-align:center;
+                        }
+                        h1 {
+                            color:darkblue;
+                        }
+                        p{
+                            font-size:20px;
+                            color:green;
+                        }
+                        button {
+                            padding:10px 20px;
+                            font-size:16px;
+                        }
+                        
+                        </style>
+                    
+                    <script>
+                    function changeText() { 
+                        document.getElementById("message").innerHTML="welcome to javascript!";
+                    }
+                    </script>
+                    </head>
+                    <body>
+                        <h1>internal CSS Demonstration</h1>
+                        <p id="message">Click the button to change  this text.</p>
+                        <button onclick="changeText()">click here</button>
+                    </body>
+                    </html>
+                    
