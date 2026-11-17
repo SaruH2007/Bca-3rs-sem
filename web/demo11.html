@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Application from</title>
+
+    </head>
+    <body>
+        <h2>Student Application from</h2>
+        <from onsubmit="return balidateForm()">
+            <lable>name:</lable>
+            <inpt type="text"id="name"name="name"/>
+            <br/><br/>
+
+            <lable>Date of birth:</lable>
+            <input type="date"id="dob"name="dob"/>
+            <br/><br/>
+
+            <lable>Gender:</lable>
+            <input type="radio" name="gender" value="male"/>male
+            <input type="radio" name="gender" values="femle"/>female
+            <br/><br/>
+
+            <lable>Email:</lable>
+            <input type="Email"id="eamil"name="email"/>
+            <br/><br/>
+
+            <lable>mobile:</lable>
+            <input type="text"id="mobile"name="mobile"/>
+            <br/><br/>
+
+            <lable>Coyrse:</lable>
+            <select id="course"name="course">
+            
+                <option value="BCA">BCA</option>
+                <option value="B.com">B.com</option>
+                <option value="B.sc">B.sc</option>
+                <option value="BA">BA</option>
+            </select>
+            <br/>
+        <br/>
+        <lable>Address:</lable>
+        <br/>
+        <textarea id="address"name="address"rows="4"cols="30"></textarea>
+        <br/><br/>
+
+        <input type="submit"value="submit"/>
+        <input type="reset"value="clear"/>
+        </form>
+    </body>
+
+    <script>
+        function validateForm() {
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var mobile=document.getElementById("mobile").value;
+
+            if(name==""||email=="||mobile"") {
+            alert("please fill all requires fields.");
+        return fals;
+    }
+
+alert("Application submittes successfully!");
+return true;
+}
+</script>
+</html>
+
+
+
+
+
+
+
+
+        }
+
+                
