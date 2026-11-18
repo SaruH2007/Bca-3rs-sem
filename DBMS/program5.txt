@@ -1,0 +1,56 @@
+SELECT * FROM student1
+    -> WHERE marks>(SELECT AVG(marks)FROM student1);
++----+-------+-----------+-------+------------+
+| ID | name  | deparment | marks | city       |
++----+-------+-----------+-------+------------+
+|  1 | Akash | BCA       |    85 | koppal     |
+|  3 | Priya | BCom      |    90 | koppal     |
+|  6 | Kiran | BCA       |    95 | Gangavathi |
++----+-------+-----------+-------+------------+
+3 rows in set (0.06 sec)
+
+mysql> SELECT * FROM student1
+    -> WHERE marks=(SELECT MAX(marks)FROM student1);
++----+-------+-----------+-------+------------+
+| ID | name  | deparment | marks | city       |
++----+-------+-----------+-------+------------+
+|  6 | Kiran | BCA       |    95 | Gangavathi |
++----+-------+-----------+-------+------------+
+1 row in set (0.03 sec) SELECT * FROM student1
+    -> WHERE department=(
+    -> SELECT department
+    -> FROM student1
+    -> WHERE name='Akash'
+    -> );
+ERROR 1054 (42S22): Unknown column 'department' in 'where clause'
+mysql>
+mysql>
+mysql> SELECT * FROM student1
+    -> WHERE marks>(
+    -> SELECT marks
+    -> FROM student1
+    -> WHERE name='Ravi'
+    -> );
++----+-------+-----------+-------+------------+
+| ID | name  | deparment | marks | city       |
++----+-------+-----------+-------+------------+
+|  1 | Akash | BCA       |    85 | koppal     |
+|  3 | Priya | BCom      |    90 | koppal     |
+|  5 | Anu   | BCom      |    80 | koappal    |
+|  6 | Kiran | BCA       |    95 | Gangavathi |
++----+-------+-----------+-------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT MAX(marks)
+    -> FROM student1
+    -> WHERE marks<(
+    -> SELECT MAX(marks)
+    -> FROM student1
+    -> );
++------------+
+| MAX(marks) |
++------------+
+|         90 |
++------------+
+1 row in set (0.00 sec)
