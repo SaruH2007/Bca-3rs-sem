@@ -1,0 +1,56 @@
+mysql> USE employee;
+Database changed
+mysql> CREATE TABLE student4(
+    ->     ID INT  PRIMARY KEY,
+    ->       name VARCHAR(50),
+    ->       deparment VARCHAR(30),
+    ->       marks INT,
+    ->       city VARCHAR(30)
+    ->           );
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> INSERT INTO student4
+    -> VALUES(7,'Suresh','BCA',88,'Koppal');
+Query OK, 1 row affected (0.04 sec)
+
+mysql>
+mysql>
+mysql> INSERT INTO student4 VALUES
+    -> (8,'pooja','BCA',78,'Koppal'),
+    -> (9,'Ramesh','Bcom',82,'Gangavati'),
+    -> (1,'Geeta','BCA',91,'yelaburga');
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> UPDATE student4
+    -> SET marks=95
+    -> WHERE id=7;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> DELETE FROM student4
+    -> WHERE id=10;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql>
+mysql> SELECT * FROM student4;
++----+--------+-----------+-------+-----------+
+| ID | name   | deparment | marks | city      |
++----+--------+-----------+-------+-----------+
+|  1 | Geeta  | BCA       |    91 | yelaburga |
+|  7 | Suresh | BCA       |    95 | Koppal    |
+|  8 | pooja  | BCA       |    78 | Koppal    |
+|  9 | Ramesh | Bcom      |    82 | Gangavati |
++----+--------+-----------+-------+-----------+
+4 rows in set (0.04 sec)
+
+mysql> DELETE FROM student4;
+Query OK, 4 rows affected (0.03 sec)
+
+mysql> SELECT * FROM stdudent4;
+ERROR 1146 (42S02): Table 'employee.stdudent4' doesn't exist
+mysql>
+
+
+
