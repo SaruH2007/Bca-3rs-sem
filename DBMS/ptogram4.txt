@@ -1,0 +1,96 @@
+ USE employee;
+Database changed
+mysql> CREATE USER'student'@'localhost'
+    -> IDENTIFIED BY'12345';
+Query OK, 0 rows affected (0.23 sec)
+
+mysql>
+mysql>
+mysql> GRANT SELECT, INSERT
+    -> ON college.*
+    -> TO'student'@'localhost';
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> SHOW GRANTS FOR'student'@'localhost';
++--------------------------------------------------------------+
+| Grants for student@localhost                                 |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `student`@`localhost`                  |
+| GRANT SELECT, INSERT ON `college`.* TO `student`@`localhost` |
++--------------------------------------------------------------+
+2 rows in set (0.01 sec)
+
+mysql> REVOKE INSERT
+    -> ON college.*
+    -> FROM'student'@'localhost';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql>
+mysql> CREATE TABLE account(
+    -> acc_no INT PRIMARY KEY,
+    -> name VARCHAR(30),
+    -> balance INT
+    -> );
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> INSERT INTO account VALUES
+    -> (101,'Akash',5000),
+    -> (102,'Ravi',3000);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> STSRT TRANSACTION;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STSRT TRANSACTION' at line 1
+mysql> UPDATE account
+    -> SET balance=6000
+    -> WHERE acc_no=101;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE account
+    -> SET balance=1000
+    -> WHERE acc_no=102;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> SELECT*FROM account;
++--------+-------+---------+
+| acc_no | name  | balance |
++--------+-------+---------+
+|    101 | Akash |    6000 |
+|    102 | Ravi  |    3000 |
++--------+-------+---------+
+2 rows in set (0.00 sec)
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE account SET balance=7000
+    -> WHERE acc_no=101;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SAVEPOINT s1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE account SET balance=2000
+    -> WHERE acc_no=102;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> ROLLBACK TO s1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.03 sec)
